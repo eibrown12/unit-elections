@@ -1,0 +1,6 @@
+ErrorDocument 401 default
+
+AuthType Basic
+AuthName "Tulpe Unit Elections Admin"
+AuthUserFile /home/tulpe102/elections.tulpelodge.org/admin/.htpasswd
+Require valid-user
