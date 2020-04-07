@@ -31,6 +31,6 @@ $createElection->execute();
 $createElection->close();
 
 
-header("Location: index.php");
+header("Location: index.php?status=1");
 
 ?>

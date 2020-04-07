@@ -41,6 +41,6 @@ $updateElection1->execute();
 $updateElection1->close();
 
 
-header("Location: index.php?accessKey=" . $accessKey . "&status=1");
+header("Location: index.php?status=1");
 
 ?>

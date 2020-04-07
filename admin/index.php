@@ -32,6 +32,14 @@ if ($conn->connect_error) {
     <?php include 'navbar.php'; ?>
 
     <main class="container-fluid">
+      <?php
+      if ($_GET['status'] == 1) { ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Saved!</strong> Your data has been saved! Thanks!
+            <button type="button" class="close" data-dismiss="alert"><i class="fas fa-times"></i></button>
+        </div>
+    <?php } ?>
         <section class="row">
             <div class="col-12">
                 <h2>Unit Elections Dashboard</h2>

@@ -64,14 +64,14 @@ if ($conn->connect_error) {
                   <div class="form-row">
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label for="unitNumber">Unit Number</label>
-                        <input id="unitNumber" name="unitNumber" type="number" class="form-control" value="<?php echo $getUnitElections['unitNumber']; ?>">
+                        <label for="unitNumber" class="required">Unit Number</label>
+                        <input id="unitNumber" name="unitNumber" type="number" class="form-control" value="<?php echo $getUnitElections['unitNumber']; ?>" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label for="unitCommunity">Unit Community</label>
-                        <input id="unitCommunity" name="unitCommunity" type="text" class="form-control" value="<?php echo $getUnitElections['unitCommunity']; ?>">
+                        <label for="unitCommunity" class="required">Unit Community</label>
+                        <input id="unitCommunity" name="unitCommunity" type="text" class="form-control" value="<?php echo $getUnitElections['unitCommunity']; ?>" required>
                       </div>
                     </div>
                   </div>
@@ -84,14 +84,14 @@ if ($conn->connect_error) {
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
-                        <label for="dateOfElection">Date of Unit Election</label>
-                        <input id="dateOfElection" name="dateOfElection" type="date" class="form-control" value="<?php echo $getUnitElections['dateOfElection']; ?>">
+                        <label for="dateOfElection" class="required">Date of Unit Election</label>
+                        <input id="dateOfElection" name="dateOfElection" type="date" class="form-control" value="<?php echo $getUnitElections['dateOfElection']; ?>" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
-                        <label for="chapter">Chapter</label>
-                        <select id="chapter" name="chapter" class="form-control">
+                        <label for="chapter" class="required">Chapter</label>
+                        <select id="chapter" name="chapter" class="form-control" required>
                           <option></option>
                           <option value="TestChapter" <?php echo ($getUnitElections['chapter'] == 'TestChapter' ? 'selected' : ''); ?> >TestChapter</option>
                           <option value="annawon" <?php echo ($getUnitElections['chapter'] == 'Annawon' ? 'selected' : ''); ?> >Annawon</option>
@@ -144,7 +144,7 @@ if ($conn->connect_error) {
                       </div>
                     </div>
                   </div>
-                  <a href="index.php?accessKey=<?php echo $accessKey; ?>" class="btn btn-secondary">Cancel</a>
+                  <a href="index.php" class="btn btn-secondary">Cancel</a>
                   <input type="submit" class="btn btn-primary" value="Save">
                 </form>
               </div>

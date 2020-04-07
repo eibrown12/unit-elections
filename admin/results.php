@@ -178,7 +178,7 @@ if ($unitQ->num_rows > 0) {
               </div><?php
             } else {
               ?>
-              <div class="alert alert-danger" role="alert">
+              <div class="mt-4 alert alert-danger" role="alert">
                 There are no elected Scouts.
               </div>
               <?php
