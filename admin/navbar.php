@@ -9,8 +9,8 @@
     <div class="collapse navbar-collapse c-navbar-content" id="navbar-main">
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="index.php"><i class="fas fa-tachometer-alt pr-1"></i> Dashboard</a>
-            <a class="nav-item nav-link" href="create-unit-election.php">Create Unit Election</a>
-            <a class="nav-item nav-link" href="results.php">View Results</a>
+            <a class="nav-item nav-link" href="create-unit-election.php"><i class="fas fa-plus pr-1"></i> Create Unit Election</a>
+            <a class="nav-item nav-link" href="results.php"><i class="fas fa-poll-h pr-1"></i> View Results</a>
         </div>
     </div>
 </nav>
