@@ -39,44 +39,60 @@ if ($conn->connect_error) {
         </section>
 
         <?php
-          $getUnitElectionsQuery = $conn->prepare("SELECT * from unitElections");
-          $getUnitElectionsQuery->execute();
-          $getUnitElectionsQ = $getUnitElectionsQuery->get_result();
-          if ($getUnitElectionsQ->num_rows > 0) {
-            //print election info
-            ?>
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title">Scheduled Unit Elections</h5>
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Unit Number</th>
-                        <th scope="col">Unit Community</th>
-                        <th scope="col">Chapter</th>
-                        <th scope="col">Date of Election</th>
-                        <th scope="col">accessKey</th>
-                        <th scope="col">View Results</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php while ($getUnitElections = $getUnitElectionsQ->fetch_assoc()){
-                        ?><tr>
-                          <td><?php echo $getUnitElections['unitNumber']; ?></td>
-                          <td><?php echo $getUnitElections['unitCommunity']; ?></td>
-                          <td><?php echo $getUnitElections['chapter']; ?></td>
-                          <td><?php echo date("m-d-Y", strtotime($getUnitElections['dateOfElection'])); ?></td>
-                          <td><?php echo $getUnitElections['accessKey']; ?></td>
-                          <td><a href="results.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">view</a></td>
-                        </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
+          $getChaptersQuery = $conn->prepare("SELECT DISTINCT chapter FROM unitElections ORDER BY chapter ASC");
+          $getChaptersQuery->execute();
+          $getChaptersQ = $getChaptersQuery->get_result();
+          if ($getChaptersQ->num_rows > 0) {
+            while ($getChapters = $getChaptersQ->fetch_assoc()) {
+              $getUnitElectionsQuery = $conn->prepare("SELECT * from unitElections where chapter = ?");
+              $getUnitElectionsQuery->bind_param("s", $getChapters['chapter']);
+              $getUnitElectionsQuery->execute();
+              $getUnitElectionsQ = $getUnitElectionsQuery->get_result();
+              if ($getUnitElectionsQ->num_rows > 0) {
+                //print election info
+                ?>
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $getChapters['chapter']; ?></h5>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Unit Number</th>
+                            <th scope="col">Unit Community</th>
+                            <th scope="col">Chapter</th>
+                            <th scope="col">Date of Election</th>
+                            <th scope="col">accessKey</th>
+                            <th scope="col">View Results</th>
+                            <th scope="col">Edit</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php while ($getUnitElections = $getUnitElectionsQ->fetch_assoc()){
+                            ?><tr>
+                              <td><?php echo $getUnitElections['unitNumber']; ?></td>
+                              <td><?php echo $getUnitElections['unitCommunity']; ?></td>
+                              <td><?php echo $getUnitElections['chapter']; ?></td>
+                              <td><?php echo date("m-d-Y", strtotime($getUnitElections['dateOfElection'])); ?></td>
+                              <td><?php echo $getUnitElections['accessKey']; ?></td>
+                              <td><a href="results.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">view</a></td>
+                              <td><a href="edit-unit-election.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">edit</a></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <?php
+                <?php
+              } else {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                  There are no elections in the database.
+                </div>
+                <?php
+              }
+            }
           } else {
             ?>
             <div class="alert alert-danger" role="alert">

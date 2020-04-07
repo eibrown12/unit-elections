@@ -79,13 +79,17 @@ if ($unitQ->num_rows > 0) {
     }
   } else { $accessKey = "all"; }
 
+  $unitFileName = "";
+
   if ($accessKey == "all") {
     $getElectedScoutsQuery = $conn->prepare("SELECT * from eligibleScouts LEFT JOIN unitElections on eligibleScouts.unitId = unitElections.id WHERE isElected = 1");
+    $unitFileName = "all";
   } else {
     if (array_key_exists($accessKey, $unitArr)) {
       //get all elected scouts from unit
       $getElectedScoutsQuery = $conn->prepare("SELECT * from eligibleScouts LEFT JOIN unitElections on eligibleScouts.unitId = unitElections.id WHERE isElected = 1 and unitElections.accessKey = ?");
       $getElectedScoutsQuery->bind_param("s", $accessKey);
+      $unitFileName = $unitArr[$accessKey]['unitNumber'] . $unitArr[$accessKey]['unitCommunity'];
     } else {
       //no election exists
     }
@@ -139,7 +143,7 @@ if ($unitQ->num_rows > 0) {
         fclose($output);
     }
 
-  $filename = "unit_election_results_" . date('Ymd') . ".csv";
+  $filename = "unit_election_results_" . $unitFileName . "_" . date('Ymd') . ".csv";
   outputCSV($data, $filename);
 
   exit;
