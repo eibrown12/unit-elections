@@ -31,7 +31,7 @@ if ($conn->connect_error) {
   <div class="wrapper">
     <?php include 'navbar.php'; ?>
 
-    <main class="container-fluid">
+    <main class="container-fluid col-xl-11">
       <?php
       if ($_GET['status'] == 1) { ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -66,11 +66,10 @@ if ($conn->connect_error) {
                       <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">Unit Number</th>
-                            <th scope="col">Unit Community</th>
-                            <th scope="col">Chapter</th>
+                            <th scope="col">Unit</th>
                             <th scope="col">Date of Election</th>
                             <th scope="col">accessKey</th>
+                            <th scope="col">Eligible Scouts</th>
                             <th scope="col">View Results</th>
                             <th scope="col">Edit</th>
                           </tr>
@@ -78,11 +77,10 @@ if ($conn->connect_error) {
                         <tbody>
                           <?php while ($getUnitElections = $getUnitElectionsQ->fetch_assoc()){
                             ?><tr>
-                              <td><?php echo $getUnitElections['unitNumber']; ?></td>
-                              <td><?php echo $getUnitElections['unitCommunity']; ?></td>
-                              <td><?php echo $getUnitElections['chapter']; ?></td>
+                              <td><?php echo $getUnitElections['unitNumber'] . " " . $getUnitElections['unitCommunity']; ?></td>
                               <td><?php echo date("m-d-Y", strtotime($getUnitElections['dateOfElection'])); ?></td>
                               <td><?php echo $getUnitElections['accessKey']; ?></td>
+                              <td><a href="eligible-scouts.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">Eligible Scouts</a></td>
                               <td>
                                 <?php
 
