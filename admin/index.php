@@ -52,7 +52,7 @@ if ($conn->connect_error) {
           $getChaptersQ = $getChaptersQuery->get_result();
           if ($getChaptersQ->num_rows > 0) {
             while ($getChapters = $getChaptersQ->fetch_assoc()) {
-              $getUnitElectionsQuery = $conn->prepare("SELECT * from unitElections where chapter = ?");
+              $getUnitElectionsQuery = $conn->prepare("SELECT * from unitElections where chapter = ? ORDER BY dateOfElection ASC");
               $getUnitElectionsQuery->bind_param("s", $getChapters['chapter']);
               $getUnitElectionsQuery->execute();
               $getUnitElectionsQ = $getUnitElectionsQuery->get_result();
