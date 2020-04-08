@@ -83,7 +83,22 @@ if ($conn->connect_error) {
                               <td><?php echo $getUnitElections['chapter']; ?></td>
                               <td><?php echo date("m-d-Y", strtotime($getUnitElections['dateOfElection'])); ?></td>
                               <td><?php echo $getUnitElections['accessKey']; ?></td>
-                              <td><a href="results.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">view</a></td>
+                              <td>
+                                <?php
+
+                                $tz = 'America/New_York';
+                                $timestamp = time();
+                                $dt = new DateTime("now", new DateTimeZone($tz));
+                                $dt->setTimestamp($timestamp);
+
+                                $date = $dt->format("Y-m-d");
+                                $hour = $dt->format("H");
+                                if ((strtotime($getUnitElections['dateOfElection']) < strtotime($date)) || ($getUnitElections['dateOfElection'] == $date && $hour >= 21)) { ?>
+                                  <a href="results.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">view</a>
+                                <?php } else { ?>
+                                  <span class="text-muted">not completed</span>
+                                <?php } ?>
+                              </td>
                               <td><a href="edit-unit-election.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">edit</a></td>
                             </tr>
                           <?php } ?>
