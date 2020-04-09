@@ -2,29 +2,24 @@
  *  FONTS
  */
 
-@font-face {
-    font-family: 'Museo Slab 700';
-    src: url('fonts/Museo_Slab_700.eot');
-    src: local('☺'), url('fonts/Museo_Slab_700.woff') format('woff'), url('fonts/Museo_Slab_700.ttf') format('truetype'), url('fonts/Museo_Slab_700.svg') format('svg');
-    font-weight: bold;
-    font-style: normal;
-}
+ .museo-sans{font-family:"museo-sans",sans-serif;}
+ .museo-slab{font-family:"museo-slab",serif;}
 
-@font-face {
-    font-family: 'Museo Sans';
-    src: url('fonts/MuseoSans_300.eot');
-    src: local('☺'), url('fonts/MuseoSans_300.woff') format('woff'), url('fonts/MuseoSans_300.ttf') format('truetype'), url('fonts/MuseoSans_300.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+ @font-face{font-family:museo-sans-n3;src:url(https://use.typekit.com/af/f6d549/00000000000000000000e7fe/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff2"),url(https://use.typekit.com/af/f6d549/00000000000000000000e7fe/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff"),url(https://use.typekit.com/af/f6d549/00000000000000000000e7fe/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}
 
-@font-face {
-    font-family: 'Museo Sans';
-    src: url('fonts/MuseoSans_700.eot');
-    src: local('☺'), url('fonts/MuseoSans_700.woff') format('woff'), url('fonts/MuseoSans_700.ttf') format('truetype'), url('fonts/MuseoSans_700.svg') format('svg');
-    font-weight: bold;
-    font-style: normal;
-}
+ @font-face{font-family:museo-sans-i3;src:url(https://use.typekit.com/af/55aa58/00000000000000000000e802/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff2"),url(https://use.typekit.com/af/55aa58/00000000000000000000e802/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff"),url(https://use.typekit.com/af/55aa58/00000000000000000000e802/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("opentype");font-weight:300;font-style:italic;}
+
+ @font-face{font-family:museo-sans-n7;src:url(https://use.typekit.com/af/c2dac6/00000000000000000000e805/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff2"),url(https://use.typekit.com/af/c2dac6/00000000000000000000e805/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff"),url(https://use.typekit.com/af/c2dac6/00000000000000000000e805/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;}
+
+ @font-face{font-family:museo-sans-i7;src:url(https://use.typekit.com/af/dc6ba3/00000000000000000000e806/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff2"),url(https://use.typekit.com/af/dc6ba3/00000000000000000000e806/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff"),url(https://use.typekit.com/af/dc6ba3/00000000000000000000e806/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("opentype");font-weight:700;font-style:italic;}
+
+ @font-face{font-family:museo-slab-n3;src:url(https://use.typekit.com/af/f8c331/0000000000000000000100fe/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff2"),url(https://use.typekit.com/af/f8c331/0000000000000000000100fe/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff"),url(https://use.typekit.com/af/f8c331/0000000000000000000100fe/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}
+
+ @font-face{font-family:museo-slab-i3;src:url(https://use.typekit.com/af/810490/000000000000000000010141/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff2"),url(https://use.typekit.com/af/810490/000000000000000000010141/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff"),url(https://use.typekit.com/af/810490/000000000000000000010141/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("opentype");font-weight:300;font-style:italic;}
+
+ @font-face{font-family:museo-slab-n7;src:url(https://use.typekit.com/af/1b8c3f/000000000000000000011aff/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff2"),url(https://use.typekit.com/af/1b8c3f/000000000000000000011aff/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff"),url(https://use.typekit.com/af/1b8c3f/000000000000000000011aff/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;}
+
+ @font-face{font-family:museo-slab-i7;src:url(https://use.typekit.com/af/3a798d/00000000000000000000ec0a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff2"),url(https://use.typekit.com/af/3a798d/00000000000000000000ec0a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff"),url(https://use.typekit.com/af/3a798d/00000000000000000000ec0a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("opentype");font-weight:700;font-style:italic;}
 
 /*!
  *  HTML ELEMENTS
@@ -39,7 +34,7 @@
    display: flex;
    flex-direction: column;
    background-color: #eee;
-   font-family: 'Museo Sans', 'Gill Sans', 'Helvetica', sans-serif;
+   font-family: 'museo-sans', 'Gill Sans', 'Helvetica', sans-serif;
  }
 
  body .container { max-width: 95% !important; }
@@ -54,12 +49,12 @@ a {
 }
 
 h1 {
-    font-family: 'Museo Slab', 'Rockwell', 'Helvetica', sans-serif;
+    font-family: 'museo-slab', 'Rockwell', 'Helvetica', sans-serif;
     font-size: 2rem;
 }
 
 h2 {
-    font-family: 'Museo Slab', 'Rockwell', 'Helvetica', sans-serif;
+    font-family: 'museo-slab', 'Rockwell', 'Helvetica', sans-serif;
     font-size: 1.5rem;
     font-weight: 300;
     margin-bottom: 1rem;
@@ -300,7 +295,7 @@ nav.navbar.navbar-dark {
 }
 
 nav.navbar .navbar-brand {
-    font-family: 'Museo Slab', 'Rockwell', 'Helvetica', sans-serif;
+    font-family: 'museo-slab', 'Rockwell', 'Helvetica', sans-serif;
     text-transform: uppercase;
 }
 
