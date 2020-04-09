@@ -92,7 +92,7 @@ if ($conn->connect_error) {
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="chapter">Chapter</label>
-                        <select id="chapter" name="chapter" class="form-control" disabled>
+                        <select id="chapter" name="chapter" class="custom-select" disabled>
                           <option></option>
                           <option value="TestChapter" <?php echo ($getUnitElections['chapter'] == 'TestChapter' ? 'selected' : ''); ?> >TestChapter</option>
                           <option value="annawon" <?php echo ($getUnitElections['chapter'] == 'Annawon' ? 'selected' : ''); ?> >Annawon</option>

@@ -157,7 +157,7 @@ header("Pragma: no-cache");
                             <?php } ?>
                             <div class="form-group my-2">
                                 <div class="form-check mb-1">
-                                    <input type="hidden" name="eligibleScout-<?php echo $eligibleScout['id']; ?>" id="eligibleScout-<?php echo $eligibleScout['id']; ?>" value="0">
+                                    <input type="hidden" name="eligibleScout-<?php echo $eligibleScout['id']; ?>" value="0">
                                     <input name="eligibleScout-<?php echo $eligibleScout['id']; ?>" class="form-check-input" type="checkbox" value="1" id="eligibleScout-<?php echo $eligibleScout['id']; ?>">
                                     <label class="form-check-label" for="eligibleScout-<?php echo $eligibleScout['id']; ?>">
                                         <?php echo $eligibleScout['firstName'] . " " . $eligibleScout['lastName']; ?>
