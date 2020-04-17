@@ -69,6 +69,7 @@ if ($conn->connect_error) {
                           <tr>
                             <th scope="col">Unit</th>
                             <th scope="col">Date of Election</th>
+                            <th scope="col"># of Submissions</th>
                             <th scope="col">accessKey</th>
                             <th scope="col">Eligible Scouts</th>
                             <th scope="col">View Results</th>
@@ -80,6 +81,17 @@ if ($conn->connect_error) {
                             ?><tr>
                               <td><?php echo $getUnitElections['unitNumber'] . " " . $getUnitElections['unitCommunity']; ?></td>
                               <td><?php echo date("m-d-Y", strtotime($getUnitElections['dateOfElection'])); ?></td>
+                              <?php
+                              $submissionsQuery = $conn->prepare("SELECT COUNT(*) AS unitTotal FROM submissions WHERE unitId=?");
+                              $submissionsQuery->bind_param("s", $getUnitElections['id']);
+                              $submissionsQuery->execute();
+                              $submissionsQ = $submissionsQuery->get_result();
+                              if ($submissionsQ->num_rows > 0) {
+                                $submissions = $submissionsQ->fetch_assoc();
+                                ?><td><?php echo $submissions['unitTotal']; ?> out of <?php echo $getUnitElections['numRegisteredYouth']; ?> Scouts</td>
+                              <?php }
+                              $submissionsQuery->close();
+                              ?>
                               <td><?php echo $getUnitElections['accessKey']; ?></td>
                               <td><a href="eligible-scouts.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">Eligible Scouts</a></td>
                               <td>
