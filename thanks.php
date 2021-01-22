@@ -72,10 +72,10 @@ header("Pragma: no-cache");
                 <h3 class="card-title">Are you already a Lodge member?</h3>
                 <div class="row">
                   <div class="col-md-8 mb-md-auto mb-3">
-                    Don't forget to pay your 2020 Lodge Dues! Paying your dues is a simple and great way to stay engaged with the lodge and support its mission and programs!  In addition, you will receive the 2020 Commemorative Membership Flap!
+                    Don't forget to pay your 2021 Lodge Dues! Paying your dues is a simple and great way to stay engaged with the lodge and support its mission and programs!  In addition, you will receive the 2021 Commemorative Membership Flap!
                   </div>
                   <div class="col-md-4">
-                    <a class="btn btn-primary btn-block" href="http://www.narragansettbsa.org/event/2020-oa-dues-enrollment/2600970" target="_blank">Pay Now!</a>
+                    <a class="btn btn-primary btn-block" href="https://www.narragansettbsa.org/event/2768841" target="_blank">Pay Now!</a>
                   </div>
                 </div>
                 <hr></hr>
@@ -102,13 +102,14 @@ header("Pragma: no-cache");
                   <a href="https://www.facebook.com/tulpelodge" target="_blank"><i class="fab fa-facebook-square fa-2x"></i></a>
                   <a href="https://twitter.com/tulpelodge" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>
                   <a href="https://www.instagram.com/tulpelodge/" target="_blank"><i class="fab fa-instagram-square fa-2x"></i></a>
+                  <a href="https://www.youtube.com/channel/UCNhy130Y1-026xlpZDXO7yA/" target="_blank"><i class="fab fa-youtube-square fa-2x"></i></a>
                 </p>
               </div>
             </div>
             <div class="list-group mb-3">
-              <a href="https://tulpelodge.org/sites/default/files/unit-relations/ActiveArrowman.pdf" class="list-group-item list-group-item-action" target="_blank">Active Arrowman Award</a>
-              <a href="https://tulpelodge.org/sites/default/files/unit-relations/2020-Calendar.pdf" class="list-group-item list-group-item-action" target="_blank">2020 Lodge Calendar</a>
-              <a href="https://tulpelodge.org/sites/default/files/unit-relations/LodgeEvents.pdf" class="list-group-item list-group-item-action" target="_blank">Lodge Events Flyer</a>
+              <a href="https://tulpelodge.org/activearrowman" class="list-group-item list-group-item-action" target="_blank">Active Arrowman Award</a>
+              <a href="https://tulpelodge.org/sites/default/files/resources/TulpeLodgeCalendar2021.pdf" class="list-group-item list-group-item-action" target="_blank">2021 Lodge Calendar</a>
+              <a href="https://tulpelodge.org/sites/default/files/unit-relations/LodgeEvents.pdf" class="d-none list-group-item list-group-item-action" target="_blank">Lodge Events Flyer</a>
             </div>
 
             <a href="https://tulpelodge.org/events" target="_blank" class="btn btn-primary btn-block mb-3">Events Registration Portal</a>
