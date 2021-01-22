@@ -27,7 +27,11 @@ $neededForElection = 0;
 if ($unitQ->num_rows > 0) {
   while ($unit = $unitQ->fetch_assoc()) {
     $unitArr[$unit['accessKey']] = array('id' => $unit['id'], 'unitNumber' => $unit['unitNumber'], 'unitCommunity' => $unit['unitCommunity']);
-    if ((strtotime($unit['dateOfElection']) < strtotime($date)) || (strtotime($unit['dateOfElection']) == strtotime($date) && $hour >= 21)) {
+    if ((strtotime($unit['dateOfElection']) < strtotime($date)) || (strtotime($unit['dateOfElection']) == strtotime($date) && $hour >= 21) || $unit['status'] == "closed") {
+      $updateElectionStatus = $conn->prepare("UPDATE unitElections SET status='closed' WHERE id = ?");
+      $updateElectionStatus->bind_param("s", $unit['id']);
+      $updateElectionStatus->execute();
+      $updateElectionStatus->close();
       //unit election is over
       $submissionsQuery = $conn->prepare("SELECT COUNT(*) AS unitTotal FROM submissions WHERE unitId=?");
       $submissionsQuery->bind_param("s", $unit['id']);
@@ -82,7 +86,7 @@ if ($unitQ->num_rows > 0) {
   $unitFileName = "";
 
   if ($accessKey == "all") {
-    $getElectedScoutsQuery = $conn->prepare("SELECT * from eligibleScouts LEFT JOIN unitElections on eligibleScouts.unitId = unitElections.id WHERE isElected = 1 and YEAR(dateOfElection) = YEAR(CURDATE())");
+    $getElectedScoutsQuery = $conn->prepare("SELECT * from eligibleScouts LEFT JOIN unitElections on eligibleScouts.unitId = unitElections.id WHERE isElected = 1 and YEAR(dateOfElection) = YEAR(CURDATE()) and status='closed'");
     $unitFileName = "all";
   } else {
     if (array_key_exists($accessKey, $unitArr)) {

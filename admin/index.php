@@ -94,7 +94,7 @@ if ($conn->connect_error) {
                               <?php }
                               $submissionsQuery->close();
                               ?>
-                              <td><?php echo $getUnitElections['accessKey']; ?></td>
+                              <td><a href="https://elections.tulpelodge.org/?accessKey=<?php echo $getUnitElections['accessKey']; ?>">https://elections.tulpelodge.org/?accessKey=<?php echo $getUnitElections['accessKey']; ?></a></td>
                               <td>
                                 <?php if ($getUnitElections['status'] == "closed") {
                                   ?><input class="btn btn-sm btn-secondary disabled" value="closed" type="submit" disabled><?php
