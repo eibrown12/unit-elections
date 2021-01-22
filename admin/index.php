@@ -44,16 +44,17 @@ if ($conn->connect_error) {
         <section class="row">
             <div class="col-12">
                 <h2>Unit Elections Dashboard</h2>
+                <h5>Showing Elections for <?php echo date("Y"); ?></h5>
             </div>
         </section>
 
         <?php
-          $getChaptersQuery = $conn->prepare("SELECT DISTINCT chapter FROM unitElections ORDER BY chapter ASC");
+          $getChaptersQuery = $conn->prepare("SELECT DISTINCT chapter FROM unitElections WHERE YEAR(dateOfElection) = YEAR(CURDATE()) ORDER BY chapter ASC");
           $getChaptersQuery->execute();
           $getChaptersQ = $getChaptersQuery->get_result();
           if ($getChaptersQ->num_rows > 0) {
             while ($getChapters = $getChaptersQ->fetch_assoc()) {
-              $getUnitElectionsQuery = $conn->prepare("SELECT * from unitElections where chapter = ? ORDER BY dateOfElection ASC");
+              $getUnitElectionsQuery = $conn->prepare("SELECT * from unitElections where chapter = ? and YEAR(dateOfElection) = YEAR(CURDATE()) ORDER BY dateOfElection ASC");
               $getUnitElectionsQuery->bind_param("s", $getChapters['chapter']);
               $getUnitElectionsQuery->execute();
               $getUnitElectionsQ = $getUnitElectionsQuery->get_result();
@@ -71,6 +72,7 @@ if ($conn->connect_error) {
                             <th scope="col">Date of Election</th>
                             <th scope="col"># of Submissions</th>
                             <th scope="col">accessKey</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Eligible Scouts</th>
                             <th scope="col">View Results</th>
                             <th scope="col">Edit</th>
@@ -93,6 +95,39 @@ if ($conn->connect_error) {
                               $submissionsQuery->close();
                               ?>
                               <td><?php echo $getUnitElections['accessKey']; ?></td>
+                              <td>
+                                <?php if ($getUnitElections['status'] == "closed") {
+                                  ?><input class="btn btn-sm btn-secondary disabled" value="closed" type="submit" disabled><?php
+                                } else {
+                                  $tz = 'America/New_York';
+                                  $timestamp = time();
+                                  $dt = new DateTime("now", new DateTimeZone($tz));
+                                  $dt->setTimestamp($timestamp);
+
+                                  $date = $dt->format("Y-m-d");
+                                  $hour = $dt->format("H");
+                                  if ((strtotime($getUnitElections['dateOfElection']) < strtotime($date)) || ($getUnitElections['dateOfElection'] == $date && $hour >= 21)) {
+                                    $updateElectionStatus = $conn->prepare("UPDATE unitElections SET status='closed' WHERE id = ?");
+                                    $updateElectionStatus->bind_param("s", $getUnitElections['id']);
+                                    $updateElectionStatus->execute();
+                                    $updateElectionStatus->close();
+                                    ?><input class="btn btn-sm btn-secondary disabled" value="closed" type="submit" disabled><?php
+                                  } else { ?>
+                                    <form action="set-status.php" method="POST">
+                                    <?php if ($getUnitElections['status'] == "new") { ?>
+                                        <input type="hidden" value="<?php echo $getUnitElections['id']; ?>" name="unitElectionId" id="unitElectionId">
+                                        <input type="hidden" value="open" name="unitElectionStatus" id="unitElectionStatus">
+                                        <input type="submit" value="Start Election" class="btn btn-sm btn-danger">
+                                    <?php } ?>
+                                    <?php if ($getUnitElections['status'] == "open") { ?>
+                                        <input type="hidden" value="<?php echo $getUnitElections['id']; ?>" name="unitElectionId" id="unitElectionId">
+                                        <input type="hidden" value="closed" name="unitElectionStatus" id="unitElectionStatus">
+                                        <input type="submit" value="End Election" class="btn btn-sm btn-danger">
+                                    <?php } ?>
+                                    </form>
+                                  <?php } ?>
+                                <?php } ?>
+                              </td>
                               <td><a href="eligible-scouts.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">Eligible Scouts</a></td>
                               <td>
                                 <?php
@@ -104,7 +139,7 @@ if ($conn->connect_error) {
 
                                 $date = $dt->format("Y-m-d");
                                 $hour = $dt->format("H");
-                                if ((strtotime($getUnitElections['dateOfElection']) < strtotime($date)) || ($getUnitElections['dateOfElection'] == $date && $hour >= 21)) { ?>
+                                if ((strtotime($getUnitElections['dateOfElection']) < strtotime($date)) || ($getUnitElections['dateOfElection'] == $date && $hour >= 21) || $getUnitElections['status'] == "closed") { ?>
                                   <a href="results.php?accessKey=<?php echo $getUnitElections['accessKey']; ?>">view</a>
                                 <?php } else { ?>
                                   <span class="text-muted">not completed</span>

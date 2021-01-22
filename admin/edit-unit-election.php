@@ -55,10 +55,22 @@ if ($conn->connect_error) {
           if ($getUnitElectionsQ->num_rows > 0) {
             //print election info
             ?>
+            <?php $getUnitElections = $getUnitElectionsQ->fetch_assoc(); ?>
+            <?php if ($getUnitElections['status'] == "closed") { ?>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <p>This election has ended.</p>
+                  <form action="set-status.php" method="POST">
+                    <input type="hidden" value="<?php echo $getUnitElections['id']; ?>" name="unitElectionId" id="unitElectionId">
+                    <input type="hidden" value="open" name="unitElectionStatus" id="unitElectionStatus">
+                    <input type="submit" value="Re-Open Election" class="btn btn-sm btn-outline-danger">
+                  </form>
+                </div>
+              </div>
+            <?php } ?>
             <div class="card mb-3">
               <div class="card-body">
                 <h3 class="card-title d-inline-flex">Edit Unit Election Information</h3>
-                <?php $getUnitElections = $getUnitElectionsQ->fetch_assoc(); ?>
                 <form action="edit-election-process.php" method="post">
                   <input type="hidden" id="unitId" name="unitId" value="<?php echo $getUnitElections['id']; ?>">
                   <input type="hidden" id="accessKey" name="accessKey" value="<?php echo $getUnitElections['accessKey']; ?>">

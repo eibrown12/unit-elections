@@ -82,7 +82,7 @@ if ($unitQ->num_rows > 0) {
   $unitFileName = "";
 
   if ($accessKey == "all") {
-    $getElectedScoutsQuery = $conn->prepare("SELECT * from eligibleScouts LEFT JOIN unitElections on eligibleScouts.unitId = unitElections.id WHERE isElected = 1");
+    $getElectedScoutsQuery = $conn->prepare("SELECT * from eligibleScouts LEFT JOIN unitElections on eligibleScouts.unitId = unitElections.id WHERE isElected = 1 and YEAR(dateOfElection) = YEAR(CURDATE())");
     $unitFileName = "all";
   } else {
     if (array_key_exists($accessKey, $unitArr)) {

@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     }
 
 
-    if (isset($_POST['unitId'])) {  $unitId = $conn->real_escape_string($_POST['unitId']); } else { die("No unit id."); }
+    if (isset($_POST['unitId'])) {  $unitId = $conn->real_escape_string($_POST['unitId']); } else { die("No unit election id."); }
 
     $createSubmission = $conn->prepare("INSERT into submissions(unitId) VALUES (?)");
     $createSubmission->bind_param("s", $unitId);

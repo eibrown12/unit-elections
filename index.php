@@ -93,7 +93,7 @@ header("Pragma: no-cache");
 
                 $date = $dt->format("Y-m-d");
                 $hour = $dt->format("H");
-                if (($unitInfo['dateOfElection'] == $date && (($hour >= 17) && ($hour < 21))) || $_GET['ignoreTime'] == "true") {
+                if (($unitInfo['dateOfElection'] == $date && $unitInfo['status'] !== "closed" && (($hour >= 17) && ($hour < 21))) || $_GET['ignoreTime'] == "true" || $unitInfo['status'] == "open") {
                   //if the today is the date of the election and its between 5pm and 8:59pm ET then allow voting
                   $eligibleScoutsQuery = $conn->prepare("SELECT * from eligibleScouts where unitId = ?");
                   $eligibleScoutsQuery->bind_param("s", $unitInfo['id']);
@@ -191,7 +191,11 @@ header("Pragma: no-cache");
                   //voting is not open at this time
                   ?>
                   <div class="alert alert-danger" role="alert">
-                    Your unit election is not open at this time. Your unit's election is <?php echo date("l, F j, Y", strtotime($unitInfo['dateOfElection'])); ?> from 5pm to 8:59pm ET.
+                    <?php if ($unitInfo['status'] == "closed") { ?>
+                      This unit election has ended. If you think this is a mistake, please contact us <a href="#" data-toggle="modal" data-target="#contact">here</a>.
+                    <?php } else { ?>
+                      Your unit election is not open at this time. Your unit's election is <?php echo date("l, F j, Y", strtotime($unitInfo['dateOfElection'])); ?> during your unit meeting, or from 5pm to 8:59pm ET.
+                    <?php } ?>
                   </div>
                   <?php
                 }
