@@ -118,10 +118,10 @@ header("Pragma: no-cache");
           <div class="col-md-9">
             <div class="card mb-3">
               <div class="card-body text-center">
-                <h3 class="card-title">2019 Year in Review</h3>
+                <h3 class="card-title">2020 Year in Review</h3>
                 <div class="mt-3 col-10 mx-auto embed-responsive embed-responsive-16by9">
-                  <video controls poster="/assets/yir-thumb.jpg">
-                    <source src="/assets/TulpeYearInReview2019.mp4" type="video/mp4">
+                  <video controls>
+                    <source src="/assets/TulpeYearInReview2020-music.mp4" type="video/mp4">
                     <div class="alert alert-danger" role="alert">Your browser does not support embedded video at this time. Please watch on Youtube here: <a class="alert-link" href="https://www.youtube.com/watch?v=uHOCArShiJc" target="_blank">https://www.youtube.com/watch?v=uHOCArShiJc</a></div>
                   </video>
               </div>
