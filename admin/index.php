@@ -45,6 +45,9 @@ if ($conn->connect_error) {
             <div class="col-12">
                 <h2>Unit Elections Dashboard</h2>
                 <h5>Showing Elections for <?php echo date("Y"); ?></h5>
+                <div class="alert alert-dark">
+                  Unit Leaders can edit their unit information and add eligible Scouts at <a href="https://elections.tulpelodge.org/unitleader" class="alert-link" target="_blank">https://elections.tulpelodge.org/unitleader</a> with the access key listed below.
+                </div>
             </div>
         </section>
 
@@ -94,7 +97,10 @@ if ($conn->connect_error) {
                               <?php }
                               $submissionsQuery->close();
                               ?>
-                              <td><a href="https://elections.tulpelodge.org/?accessKey=<?php echo $getUnitElections['accessKey']; ?>">https://elections.tulpelodge.org/?accessKey=<?php echo $getUnitElections['accessKey']; ?></a></td>
+                              <td>
+                                Access Key: <?php echo $getUnitElections['accessKey']; ?><br>
+                                <a href="https://elections.tulpelodge.org/?accessKey=<?php echo $getUnitElections['accessKey']; ?>">https://elections.tulpelodge.org/?accessKey=<?php echo $getUnitElections['accessKey']; ?></a>
+                              </td>
                               <td>
                                 <?php if ($getUnitElections['status'] == "closed") {
                                   ?><input class="btn btn-sm btn-secondary disabled" value="closed" type="submit" disabled><?php
